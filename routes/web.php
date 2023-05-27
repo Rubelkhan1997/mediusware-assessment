@@ -16,12 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return redirect()->to('/login');
+    // return bcrypt('admin@123');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/dropzone', 'HomeController@index')->name('file-upload');
+Route::post('/dropzone', 'ProductController@fileUpdate')->name('file-upload');
 
 Route::middleware('auth')->group(function () {
     Route::resource('product-variant', 'VariantController');
